@@ -1,0 +1,12 @@
+package passbyref;
+
+public class Client {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Employee e = new Employee(101,"k",10);
+		System.out.println(e);
+		e.getOrgName();
+	}
+
+}

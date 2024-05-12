@@ -1,0 +1,13 @@
+package com.app.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.app.entities.Candidate;
+
+public interface CandidateDao {
+	List<Candidate> getAllCandidate() throws SQLException;
+	void incrementCandidateVotes(int id) throws SQLExceptio;
+	
+
+}

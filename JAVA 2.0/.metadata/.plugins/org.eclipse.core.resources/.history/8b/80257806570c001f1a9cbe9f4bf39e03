@@ -1,0 +1,22 @@
+package tester;
+
+import java.util.Map;
+import java.util.Scanner;
+
+import com.app.core.Student;
+
+import static utils.StudentCollectionUtils.*;
+public class TestIO {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try(Scanner sc = new Scanner(System.in)){
+			  Map<String, Student> studentList = populateMap(populateList());
+			  
+			
+			
+		}
+
+	}
+
+}

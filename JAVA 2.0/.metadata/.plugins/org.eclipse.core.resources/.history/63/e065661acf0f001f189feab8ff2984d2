@@ -1,0 +1,19 @@
+package com.app.tester;
+
+import java.util.Scanner;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try(Scanner sc = new Scanner(System.in)){
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+	}
+
+}

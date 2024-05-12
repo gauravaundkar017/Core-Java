@@ -1,0 +1,17 @@
+package com.app.tester;
+
+import java.util.Scanner;
+
+public class DisplayAllUsers {
+
+	public static void main(String[] args) {
+		//1. Display all users(not admin) details born between specified dates.
+
+		try(Scanner sc = new Scanner(System.in)){
+			
+		}
+		
+
+	}
+
+}

@@ -1,0 +1,67 @@
+package com.app.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import static com.app.utils.DBUtils.*;
+
+import com.app.entities.Candidate;
+import com.mysql.cj.jdbc.CallableStatement;
+
+public class CandidateDaoImpl implements CandidateDao {
+	private Connection cn;
+	private CallableStatement cst;
+	private Statement st;
+	private ResultSet rst;
+	public CandidateDaoImpl() throws SQLException {
+		cn = openConnection();
+		st = cn.createStatement(); 
+		rst = st.executeQuery("Select * from candidate");
+		
+	}
+	
+	@Override
+	public List<Candidate> getAllCandidate() throws SQLException {
+		// TODO Auto-generated method stub
+		List<Candidate> listOfCandiate = new ArrayList<Candidate>();
+		while (rst.next()) {
+			// id | name    | party    | votes
+			listOfCandiate.add(new Candidate(0, null, null, null, null, 0))
+		}
+			
+		}
+		return null;
+	}
+
+	@Override
+	public String incrementCandidateVotes(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Candidate> getTopTwoCandidatesByVotes() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Candidate> getPartyVotes() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void cleanUp() throws SQLException {
+		if (rst != null) {
+			rst.close();
+			
+		if (st != null) {
+			st.close();
+			
+		}
+	}
+}

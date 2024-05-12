@@ -1,0 +1,23 @@
+package com.app.teter;
+
+import java.sql.SQLTransactionRollbackException;
+import java.util.Map;
+import java.util.Scanner;
+
+import com.app.core.Student;
+import com.app.runnable.SortByDob;
+
+import static utils.StudentCollectionUtils.*;
+
+public class Tester {
+
+	public static void main(String[] args) {
+
+		Map<String, Student> studentList = populateMap(populateList());
+	
+		try(Scanner sc = new Scanner(System.in)){
+			SortByDob t1 = new SortByDob(studentList, sc.next());
+		}
+	}
+
+}

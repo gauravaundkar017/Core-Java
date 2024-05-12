@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=day7_phone_book/C:\/Program Files\/Java\/jdk-17.0.1\/lib\/jrt-fs.jar`java.desktop=/module=/true=/&lt;java.beans(ExceptionListener.class[ExceptionListener" modifiers="1537" timestamp="1642427210213"/>
+    <typeInfo handle="=day12_lab/C:\/Program Files\/Java\/jdk-17.0.1\/lib\/jrt-fs.jar`java.base=/module=/true=/&lt;java.lang(Runnable.class[Runnable" modifiers="1537" timestamp="1642427210213"/>
+    <typeInfo handle="=day14_jdbc/src&lt;com.app.dao{AccountDao.java[AccountDao" modifiers="513" timestamp="1715451043161"/>
+    <typeInfo handle="=day14_online_voting/src&lt;com.app.dao{CandidateDao.java[CandidateDao" modifiers="513" timestamp="1715460428130"/>
+    <typeInfo handle="=day14_online_voting/C:\/Program Files\/Java\/jdk-17.0.1\/lib\/jrt-fs.jar`java.desktop=/module=/true=/&lt;javax.print(CancelablePrintJob.class[CancelablePrintJob" modifiers="1537" timestamp="1642427210213"/>
+</typeInfoHistroy>

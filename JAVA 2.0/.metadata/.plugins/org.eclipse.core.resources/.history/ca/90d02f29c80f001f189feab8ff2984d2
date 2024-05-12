@@ -1,0 +1,12 @@
+package com.app.entities;
+
+public class Candidate {
+	private int id;
+    private String name;
+    private String email;
+    private String passsword;
+    private String party;
+    private int votes;
+
+
+}

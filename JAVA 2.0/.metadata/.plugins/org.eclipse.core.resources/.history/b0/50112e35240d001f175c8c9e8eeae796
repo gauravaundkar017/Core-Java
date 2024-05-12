@@ -1,0 +1,9 @@
+package threads1;
+
+public class MyClass extends Thread {
+	//mandatory to override run()
+	@Override
+	public void run() {
+		System.out.println(getName());
+	}
+}

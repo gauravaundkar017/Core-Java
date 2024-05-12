@@ -1,0 +1,23 @@
+package bank.system;
+
+public class Bank {
+	private int accountNumber;
+	private String accountHolderName;
+	private double balance;
+	
+	private static String bankName = "SBI" ;
+	
+	Bank(int accountNumber, String accountHolderName, double balance){
+		this.accountHolderName=accountHolderName;
+		this.accountNumber=accountNumber;
+		this.balance=balance;
+	}
+	
+	@Override
+	public String toString() {
+		
+	}
+	
+	
+	
+}

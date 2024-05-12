@@ -1,0 +1,23 @@
+package io_utils;
+
+import java.io.BufferedWriter;
+import java.util.stream.Stream;
+
+import com.app.core.Student;
+
+public interface IOFileHandling {
+
+	static void storeData(Stream<Student> strm, String fileName) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            for (Student student : students) {
+                writer.write(student.toString());
+                writer.newLine();
+            }
+            System.out.println("Data stored successfully!");
+        } catch (IOException e) {
+            System.err.println("Error storing data: " + e.getMessage());
+        }
+		
+		
+	}
+}

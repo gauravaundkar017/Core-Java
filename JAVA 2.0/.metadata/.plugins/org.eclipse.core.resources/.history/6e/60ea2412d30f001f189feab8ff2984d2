@@ -1,0 +1,15 @@
+package com.app.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.app.custom_exception.CustomException;
+import com.app.entities.Candidate;
+
+public interface CandidateDao {
+	List<Candidate> getAllCandidate() throws SQLException, CustomException;
+	String incrementCandidateVotes(int id) throws SQLException;
+	List<Candidate> getTopTwoCandidatesByVotes() throws SQLException;
+	List<Candidate> getPartyVotes() throws SQLException;
+
+}

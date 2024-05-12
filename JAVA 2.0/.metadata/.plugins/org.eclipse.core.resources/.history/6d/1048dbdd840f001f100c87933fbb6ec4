@@ -1,0 +1,38 @@
+package com.app.dao;
+
+import java.sql.*;
+import static com.app.utils.DBUtils.*;
+
+public class AccountDaoImpl implements AccountDao {
+	
+	//state 
+	private Connection cn;
+	private CallableStatement cst1;
+	
+	//def ctor
+	public AccountDaoImpl() throws SQLException {
+		//get db connection
+		cn = openConnection();
+		//create cst to invoke stored proc
+		cst1= cn.prepareCall("{call transfer_funds_proc(?,?,?,?,?)}");
+		//regester out params
+		cst1.registerOutParameter(4, Types.DOUBLE);
+		cst1.registerOutParameter(5, Types.DOUBLE);
+		System.out.println("Acct dao created...");
+		
+		
+	}
+	
+	@Override
+	public String transferFunds(int srcAcNo, int destAcNo, double amount) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void cleanUp() throws SQLException {
+		if(cst1 != null)
+			cst1.close();
+		closeConnection();
+	}
+
+}

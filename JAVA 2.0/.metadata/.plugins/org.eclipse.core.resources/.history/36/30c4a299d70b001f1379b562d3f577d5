@@ -1,0 +1,21 @@
+package functional_streams;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
+
+public class Test2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int[] data = { 1, 2, 3, 55, 45, -100, 10 };
+		for (int j = 0; j < data.length; j++) {
+			if(data[j] % 2 == 0) {
+				System.out.print(data[j]+ " ");
+			}
+		}
+		System.out.println();
+		Arrays.stream(data).filter(i -> i % 2 == 0).forEach(i -> System.out.print(i + " "));
+	}
+
+}

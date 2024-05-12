@@ -1,0 +1,13 @@
+package threads1;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//display details of the main threads (name, prio, thrd drp)
+//		System.out.println(Thread.currentThread());//tostring -- thread[main,5,main]
+		
+		
+	}
+
+}

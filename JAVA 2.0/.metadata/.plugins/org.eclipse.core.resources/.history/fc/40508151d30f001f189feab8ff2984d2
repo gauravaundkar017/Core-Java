@@ -1,0 +1,47 @@
+package com.app.tester;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.app.dao.CandidateDaoImpl;
+import com.app.entities.Candidate;
+
+public class Tester {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		try (Scanner sc = new Scanner(System.in)) {
+
+			CandidateDaoImpl candidatedao = new CandidateDaoImpl();
+			boolean exit = false;
+
+			while (!exit) {
+				System.out.println("1.Display All Candidates \n0.Exit");
+				try {
+					switch (sc.nextInt()) {
+					case 1:
+						List<Candidate> allCandidate = candidatedao.getAllCandidate();
+						allCandidate.forEach(System.out::println);
+						
+						break;
+						
+					case 0:
+						exit = true;
+						candidatedao.cleanUp();
+					}
+					
+				}catch(Exception e) {
+					e.printStackTrace();
+					sc.nextLine();
+				}
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

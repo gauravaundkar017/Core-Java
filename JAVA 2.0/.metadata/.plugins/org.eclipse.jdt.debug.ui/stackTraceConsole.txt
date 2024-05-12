@@ -1,0 +1,29 @@
+   for (int i = 0; i < listOfCustomer.size(); i++) {
+        if (listOfCustomer.get(i).getEmail().equals(email)) {
+            emailIndex = i;
+        }
+        if (listOfCustomer.get(i).getPassword().equals(password)) {
+            passIndex = i;
+        }
+    }   for (int i = 0; i < listOfCustomer.size(); i++) {
+        if (listOfCustomer.get(i).getEmail().equals(email)) {
+            emailIndex = i;
+        }
+        if (listOfCustomer.get(i).getPassword().equals(password)) {
+            passIndex = i;
+        }
+    }   for (int i = 0; i < listOfCustomer.size(); i++) {
+        if (listOfCustomer.get(i).getEmail().equals(email)) {
+            emailIndex = i;
+        }
+        if (listOfCustomer.get(i).getPassword().equals(password)) {
+            passIndex = i;
+        }
+    }   for (int i = 0; i < listOfCustomer.size(); i++) {
+        if (listOfCustomer.get(i).getEmail().equals(email)) {
+            emailIndex = i;
+        }
+        if (listOfCustomer.get(i).getPassword().equals(password)) {
+            passIndex = i;
+        }
+    }

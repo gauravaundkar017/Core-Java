@@ -1,0 +1,71 @@
+package tester;
+
+import java.util.Comparator;
+import java.util.Map;
+import java.util.stream.IntStream;
+
+import com.app.core.Student;
+import com.app.core.Subject;
+
+import static utils.StudentCollectionUtils.*;
+
+public class Test6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// display sum of squares of the even nos between 1-100
+		System.out.println();
+		int result = IntStream.rangeClosed(1, 50) // Intstream 1-50
+				.filter(i -> i % 2 == 0) // Intstream : even
+				.map(i -> i * i) // IntStream : squrare of evens
+				.sum(); // terminal op : reduce
+		System.out.println("Sum : " + result);
+		System.out.println();
+
+		// display sum of gpas of all passed student
+		Map<String, Student> studentMap = populateMap(populateList());
+
+		studentMap.values().stream().filter(s -> s.getGpa() > 6).forEach(s -> System.out.println(s));
+
+		System.out.println();
+		double result1 = studentMap.values() // map to collection
+				.stream() // stream of collection // all students
+				.filter(s -> s.getGpa() > 5) // stream of filter studentt // passed student
+				// get or extract of gpa of stud and return new stream
+				.mapToDouble(s -> s.getGpa()) // Double stream
+				.sum();
+		System.out.println("sum of gpas" + result1);
+
+		System.out.println();
+
+		// display the student dteails from list of stud
+		// sorted as per dob
+		Comparator<Student> comp = (s1, s2) -> s1.getDob().compareTo(s2.getDob());
+		studentMap.values().stream()
+		.sorted(comp)
+		.forEach(s -> System.out.println(s));
+		
+		System.out.println();
+		System.out.println("topper is");
+		//print the name of subject topper
+		Comparator<Student> comp1 = (s1, s2) -> ((Double)s1.getGpa()).compareTo(s2.getGpa());
+		Subject choosenSub = Subject.DBT;
+		 Student student = studentMap.values()
+		.stream()
+		.filter(s-> s.getSubject() == choosenSub)
+		.max(comp1)  //optional holding the student //terminal op 
+		.get();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+}

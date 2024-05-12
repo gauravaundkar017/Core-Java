@@ -1,0 +1,14 @@
+package bank.system;
+
+public class Bank {
+	private int accountNumber;
+	private String accountHolderName;
+	private double balance;
+	
+	static String bankName = "SBI" ;
+	
+	public Bank(int accountNumber, String accountHolderName)
+	
+	
+	
+}

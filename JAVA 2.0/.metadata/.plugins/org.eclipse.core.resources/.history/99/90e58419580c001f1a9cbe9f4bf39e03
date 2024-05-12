@@ -1,0 +1,12 @@
+package io_utils;
+
+import java.util.stream.Stream;
+
+import com.app.core.Student;
+
+public interface IOFileHandling {
+
+	static void storeData(Stream<Student> strm, String fileName) {
+		
+	}
+}

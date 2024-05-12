@@ -1,0 +1,71 @@
+package com.app.customers_utils;
+
+import static com.app.customers_utils.CutomersUtils.logIn;
+import static com.app.customers_utils.CutomersUtils.validatedate;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.app.core.Customer;
+import com.app.core.ServicePlan;
+import com.app.custom_exception.CustomerException;
+
+public class CustomerValidations {
+	public static void changePassword(String email, String oldPassword, String newPassword,
+			Map<String, Customer> listOfCustomers) throws CustomerException {
+		Customer cust = logIn(email, oldPassword, listOfCustomers);
+		cust.setPassword(newPassword);
+
+	}
+
+	public static String toRemoveCustomer(String email, Map<String, Customer> listOfCustomers)
+			throws CustomerException {
+		Customer c = listOfCustomers.remove(email);
+		if (c == null)
+			throw new CustomerException("Invalid email.");
+		return "Unsubscribe Successfully - " + c.getFirstName();
+	}
+
+//	public static void toRemoveCustomerBornAfter(String dob, String sp,Map<String,Customer> listOfCustomers) throws CustomerException {
+//		LocalDate date = validatedate(dob);
+//		LinkedList<Customer> list=new LinkedList<>(listOfCustomers.values());
+//		Iterator<Customer> itr = list.iterator();
+//		ServicePlan plan = ServicePlan.valueOf(sp.toUpperCase());
+//		while (itr.hasNext()) {
+//			Customer customer = itr.next();
+//			if(customer.getSp()==plan && customer.getDob().isAfter(date))
+//				itr.remove();
+//		}
+//		
+//	} 
+	public static void toRemoveCustomerBornAfter(String dob, String sp, Map<String, Customer> listOfCustomers)
+			throws CustomerException {
+		LocalDate date = validatedate(dob);
+		ServicePlan plan = ServicePlan.valueOf(sp.toUpperCase());
+
+		listOfCustomers.values().removeIf(s -> s.getDob().isAfter(date) && s.getSp() == (plan));
+	}
+
+
+	public static Map<String, Customer> populatedCustomer() {
+		Customer c1 = new Customer("John", "Patkar", "john@gmail.com", "Pass@123", 2000, LocalDate.parse("1991-03-17"),
+				ServicePlan.GOLD);
+		Customer c2 = new Customer("Lolly", "Rem", "lolly@gmail.com", "Pass@123", 2000, LocalDate.parse("2001-03-17"),
+				ServicePlan.GOLD);
+		Customer c3 = new Customer("Monty", "Parkar", "monty@gmail.com", "Pass@123", 5000,
+				LocalDate.parse("2005-03-17"), ServicePlan.DIAMOND);
+		Customer c4 = new Customer("Golly", "Vatkar", "golly@gmail.com", "Pass@123", 1000,
+				LocalDate.parse("1998-03-17"), ServicePlan.SILVER);
+		Customer c5 = new Customer("Anky", "Vakar", "anky@gmail.com", "Pass@123", 10000, LocalDate.parse("2002-03-17"),
+				ServicePlan.PLATINUM);
+
+		Customer[] cust = { c1, c2, c3, c4, c5 };
+		Map<String, Customer> map = new HashMap<String, Customer>();
+		for (Customer customer : cust) {
+			System.out.println(map.put(customer.getEmail(), customer));
+		}
+		return map;
+	}
+
+}

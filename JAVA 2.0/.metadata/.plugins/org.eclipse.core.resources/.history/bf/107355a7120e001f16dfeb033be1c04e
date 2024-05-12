@@ -1,0 +1,14 @@
+package com.app.teter;
+
+import java.util.Map;
+
+import com.app.core.Student;
+import static utils.StudentCollectionUtils.*;
+public class Tester {
+
+	public static void main(String[] args) {
+
+		Map<String, Student> studentList = populateMap();
+	}
+
+}

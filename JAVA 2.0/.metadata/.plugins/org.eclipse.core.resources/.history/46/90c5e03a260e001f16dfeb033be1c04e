@@ -1,0 +1,40 @@
+package com.app.teter;
+
+import static utils.StudentCollectionUtils.populateList;
+import static utils.StudentCollectionUtils.populateMap;
+
+import java.util.Map;
+import java.util.Scanner;
+
+import com.app.core.Student;
+import com.app.runnable.SortByDob;
+import com.app.runnable.SortByGpaSubjectWise;
+
+public class Tester {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		Map<String, Student> studentList = populateMap(populateList());
+		
+		try(Scanner sc = new Scanner(System.in)){
+			System.out.print("Enter File Name : ");
+			SortByDob sortByDob  = new SortByDob(studentList, sc.next());
+			
+			
+			Thread t1 = new Thread(sortByDob);
+			t1.start();
+			t1.join();
+			System.out.println("Main Over");
+			System.out.print("Enter File Name : ");
+			String fName = sc.next();
+			System.out.print("Enter Subject Name : ");
+			String sub = sc.next();
+			SortByGpaSubjectWise sortByGpaSubjectWise = new SortByGpaSubjectWise(studentList, fName, sub);
+			Thread t3 = new Thread(sortByGpaSubjectWise);
+			t1.start();
+			t1.join();
+			System.out.println("Main Over");
+		}
+	}
+
+}

@@ -1,0 +1,7 @@
+package threads1;
+
+public class MyClass extends Thread {
+
+	
+
+}

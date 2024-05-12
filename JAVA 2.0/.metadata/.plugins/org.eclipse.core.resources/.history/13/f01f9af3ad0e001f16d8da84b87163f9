@@ -1,0 +1,17 @@
+package com.app.dbConfig;
+
+import java.sql.Connection;
+
+public class DBUtilsPrac {
+	public static Connection connection;
+	private static final String DB_URL;
+	private static final String USER_NAME;
+	private static final String PASSWORD;
+	static {
+		DB_URL = "jdbc:mysql://localhost:3306/iacsd_jdbc_mar24";
+		USER_NAME = "root";
+		PASSWORD = "123";
+	}
+	
+
+}

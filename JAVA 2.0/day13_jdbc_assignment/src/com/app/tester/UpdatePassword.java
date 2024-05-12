@@ -1,0 +1,43 @@
+package com.app.tester;
+
+import static com.app.utils.DBUtils.openConnection;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class UpdatePassword {
+
+	public static void main(String[] args) {
+		// Register new customer
+		//| id | first_name | last_name | email         
+		//| password | dob        | status | role  |
+		try (Scanner sc = new Scanner(System.in);
+				Connection cn = openConnection();
+				PreparedStatement ps = cn.prepareStatement("delete from users where id = ?");
+
+		) {
+			System.out.println("Id ");
+			
+			ps.setInt(1, sc.nextInt());
+			
+			int rowsAffected = ps.executeUpdate();
+			if (rowsAffected>0) {
+				//ResultSet meth 
+				System.out.println("User deleted Successfully!  ");
+				
+			}else {
+				System.out.println("not deleted Successfully");
+			}
+			
+			
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+
+	}
+
+}

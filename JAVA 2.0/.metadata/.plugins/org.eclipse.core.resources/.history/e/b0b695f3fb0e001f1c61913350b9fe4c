@@ -1,0 +1,22 @@
+package com.app.tester;
+
+import java.sql.Connection;
+import java.util.Scanner;
+import static com.app.utils.DBUtils.*;
+public class DisplayAllUsers {
+
+	public static void main(String[] args) {
+		//1. Display all users(not admin) details born between specified dates.
+
+		try(
+				Scanner sc = new Scanner(System.in);
+				Connection cn = openConnection();
+				
+				){
+			
+		}
+		
+
+	}
+
+}

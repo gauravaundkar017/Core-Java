@@ -1,0 +1,28 @@
+package com.app.teter;
+
+import static utils.StudentCollectionUtils.populateList;
+import static utils.StudentCollectionUtils.populateMap;
+
+import java.util.Map;
+import java.util.Scanner;
+
+import com.app.core.Student;
+import com.app.runnable.SortByDob;
+
+public class Tester {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		Map<String, Student> studentList = populateMap(populateList());
+		
+		try(Scanner sc = new Scanner(System.in)){
+			System.out.print("Enter File Name");
+			SortByDob sortByDob  = new SortByDob(studentList, sc.next());
+			
+			Thread t1 = new Thread(sortByDob);
+			t1.start();
+			t1.join();
+		}
+	}
+
+}

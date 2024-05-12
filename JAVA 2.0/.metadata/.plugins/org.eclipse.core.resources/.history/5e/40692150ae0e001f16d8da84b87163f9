@@ -1,0 +1,21 @@
+package com.app.dbConfig;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBUtilsPrac {
+	public static Connection connection;
+	private static final String DB_URL;
+	private static final String USER_NAME;
+	private static final String PASSWORD;
+	static {
+		DB_URL = "jdbc:mysql://localhost:3306/iacsd_jdbc_mar24";
+		USER_NAME = "root";
+		PASSWORD = "123";
+	}
+	public static Connection openConnection() {
+		connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+		return connection;
+	}
+
+}

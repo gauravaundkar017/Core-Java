@@ -1,0 +1,27 @@
+package com.app_contact_validation;
+
+import java.time.LocalDate;
+import java.util.HashSet;
+
+import com.app.core.Contact;
+
+public class ContactValidation {
+	
+	public static Contact validateConatactDetails(String phoneNumber, String name, String dob, 
+			String email, HashSet<Contact> contacts){
+		LocalDate date = LocalDate.parse(dob);
+		
+		return new Contact(phoneNumber, name, date, email );
+		
+	}	
+	
+	public static void NoDupNameAndDob(String name, String dob, HashSet<Contact> contacts) {
+		LocalDate date = LocalDate.parse(dob);
+		Contact c = new Contact(name, date);
+			if (contacts.contains(c)) {
+				throw new CustomerException("---Duplicate Name and Date of Birth---");
+			}
+	
+		
+	}
+}

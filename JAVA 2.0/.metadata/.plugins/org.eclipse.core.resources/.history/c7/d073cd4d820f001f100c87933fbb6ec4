@@ -1,0 +1,13 @@
+package com.app.dao;
+
+import java.sql.*;
+
+public class AccountDaoImpl implements AccountDao {
+
+	@Override
+	public String transferFunds(int srcAcNo, int destAcNo, double amount) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

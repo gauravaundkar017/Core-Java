@@ -1,0 +1,45 @@
+package tester;
+
+import java.util.Map;
+import java.util.stream.IntStream;
+
+import com.app.core.Student;
+
+import static utils.StudentCollectionUtils.*;
+public class Test6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// display sum of squares of the even nos between 1-100
+		System.out.println();
+		int result = IntStream.rangeClosed(1, 50) //Intstream 1-50
+		.filter(i -> i % 2 == 0) //Intstream : even
+		.map(i -> i * i) //IntStream : squrare of evens
+		.sum(); //terminal op : reduce
+		System.out.println("Sum : "+ result);
+		System.out.println();
+		
+		
+		
+		//display sum of gpas of all passed student
+		Map<String, Student> studentMap = populateMap(populateList());
+		
+		studentMap.values().stream()
+		.filter(s->s.getGpa() > 6)
+		.forEach(s->System.out.println(s));
+		
+		System.out.println();
+		double result1 = studentMap.values() //map to collection
+		.stream()  // stream of collection // all students
+		.filter(s->s.getGpa()>5) // stream of filter studentt // passed student
+	    //get or extract of gpa of stud and return new stream
+		.mapToDouble(s->s.getGpa())  // Double stream
+		.sum();
+		System.out.println(result1);
+		
+		
+		
+	}
+
+}

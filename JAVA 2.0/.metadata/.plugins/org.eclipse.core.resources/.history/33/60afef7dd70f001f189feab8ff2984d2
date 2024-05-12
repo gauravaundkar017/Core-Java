@@ -1,0 +1,101 @@
+package com.app.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import static com.app.utils.DBUtils.*;
+
+import com.app.custom_exception.CustomException;
+import com.app.entities.Candidate;
+import com.mysql.cj.jdbc.CallableStatement;
+
+public class CandidateDaoImpl implements CandidateDao {
+	private Connection cn;
+	private CallableStatement cst;
+	private PreparedStatement pst, pst1;
+	private Statement st;
+	private ResultSet rst, rst1, rst2;
+
+	public CandidateDaoImpl() throws SQLException {
+		cn = openConnection();
+		st = cn.createStatement();
+		rst = st.executeQuery("Select * from candidates");
+
+		// update vote
+		pst = cn.prepareStatement("update candidates set votes = votes + 1 where id = ?");
+
+		// toop 2
+		rst1 = st.executeQuery(
+				"select * from candidates c where 2 > (select count(*) from (select distinct votes from candidates) cv where cv.votes > c.votes ) order by votes desc");
+
+		// part wise vote
+		rst2 = st.executeQuery("select party Party, sum(votes) Total_Votes from candidates group by party;");
+
+	}
+
+	@Override
+	public List<Candidate> getAllCandidate() throws SQLException, CustomException {
+		// TODO Auto-generated method stub
+		List<Candidate> listOfCandidate = new ArrayList<Candidate>();
+		while (rst.next()) {
+			listOfCandidate.add(new Candidate(rst.getString(2), rst.getString(3), rst.getInt(4)));
+		}
+		if (listOfCandidate == null)
+			throw new CustomException("Candiate List is empty.");
+		return listOfCandidate;
+	}
+
+	@Override
+	public String incrementCandidateVotes(int id) throws SQLException, CustomException {
+		// TODO Auto-generated method stub
+		pst.setInt(1, id);
+
+		int updatedvotes = pst.executeUpdate();
+		if (updatedvotes == 1)
+			return "Vote updated";
+		throw new CustomException("Votre not updated");
+	}
+
+	@Override
+	public List<Candidate> getTopTwoCandidatesByVotes() throws SQLException, CustomException {
+		// TODO Auto-generated method stub
+		List<Candidate> listOfTopTwoCandidates = new ArrayList<Candidate>();
+		while (rst1.next()) {
+			listOfTopTwoCandidates.add(new Candidate(rst1.getString(2), rst1.getString(3), rst1.getInt(4)));
+		}
+		if (listOfTopTwoCandidates == null)
+			throw new CustomException("List is empty");
+		return listOfTopTwoCandidates;
+	}
+
+	@Override
+	public List<Candidate> getPartyVotes() throws SQLException {
+		List<Candidate> listOfPartyWiseVotes = new ArrayList<Candidate>();
+		// TODO Auto-generated method stub
+		while(rst2.next()) {
+			listOfPartyWiseVotes.add(new Candidate(null, rst1.getString(3), rst1.getInt(4)))
+		}
+		return null;
+	}
+
+	public void cleanUp() throws SQLException {
+		if (rst != null)
+			rst.close();
+		if (rst1 != null)
+			rst1.close();
+		if (rst2 != null)
+			rst2.close();
+
+		if (st != null)
+			st.close();
+
+		if (pst != null)
+			pst.close();
+
+	}
+}

@@ -1,0 +1,24 @@
+package tester;
+
+import java.util.Map;
+import java.util.Scanner;
+
+import com.app.core.Student;
+
+import static utils.StudentCollectionUtils.*;
+public class TestIO implements IOFileHandling{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try(Scanner sc = new Scanner(System.in)){
+			  Map<String, Student> studentList = populateMap(populateList());
+			  studentList.values()
+			  .stream()
+			  .sorted((s1,s2) -> s1.getName().compareTo(s2.getName()));
+			
+			
+		}
+
+	}
+
+}

@@ -1,0 +1,59 @@
+package com.app.tester;
+
+import java.sql.*;
+import java.util.Scanner;
+
+import static com.app.utils.DBUtils.openConnection;
+
+//user login
+
+public class TestPreparedStatement {
+
+	public static void main(String[] args) {
+		try (Scanner sc = new Scanner(System.in);
+				// get db connection
+				Connection cn = openConnection();
+				// create pre-compiled stmt, to hold the sql
+				PreparedStatement pst = cn
+						.prepareStatement("select * from users from where email = ? and password = ?");) {
+			// execute select query n getResult
+
+			System.out.println("Enter your email and password");
+			// set in params : public void setType(int paramIndex, Type value ) throws
+			// SQLException
+			pst.setString(1, sc.next());// email
+			pst.setString(2, sc.next());// passwd
+
+			try (ResultSet rst = pst.executeQuery()) {
+				if (rst.next()) {
+					System.out.println("Login Successful! Hello"+rst.getString(2)+" "+ rst.getString(3));
+
+					System.out.printf("Id %d Name %s %s Email %s pwd %s DoB %s Satus %s" + " Role %s %n", rst.getInt(1),
+							rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6),
+							rst.getBoolean(7), rst.getString(2));
+				}
+
+			}
+		}
+
+//				ResultSet rst = st.executeQuery("Select * from users order by email")) {
+//
+//			// ResultSet Procesing
+//			// curson --> before 1 st row
+//			while (rst.next()) {
+//				/*
+//				 * id | first_name | last_name | email | password | dob | status | role |
+//				 */
+//				System.out.printf("Id %d Name %s %s Email %s pwd %s DoB %s Satus %s" + " Role %s %n", rst.getInt(1),
+//						rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6),
+//						rst.getBoolean(7), rst.getString(2));
+//			}
+//
+//		} // JVM : cn.close()
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

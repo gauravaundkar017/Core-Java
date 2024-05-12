@@ -1,0 +1,42 @@
+package bank.system;
+
+public class Bank {
+	private int accountNumber;
+	private String accountHolderName;
+	private double balance;
+	
+	private static String bankName = "SBI" ;
+	
+	Bank(int accountNumber, String accountHolderName, double balance){
+		this.accountHolderName=accountHolderName;
+		this.accountNumber=accountNumber;
+		this.balance=balance;
+	}
+	
+	@Override
+	public String toString() {
+		return "Account Number : "+accountNumber + "   Account Holder Name : "+ accountHolderName + 
+				"   Balance : "+balance + "  Bank Name : "+bankName;
+		
+	}
+	
+	
+	public double depositeMoney(double depositeAmount) {
+		if (depositeAmount <= 0) {
+			System.out.println("Please enter valid amount");
+		}
+		balance = balance + depositeAmount;
+		return balance ;
+	}
+	
+	public double withdrawMoney(double withdrawAmount) {
+		if (balance < withdrawAmount) {
+			System.out.println("Insufficient Balance");
+			
+		}
+		balance = balance - withdrawAmount;
+		return balance ;
+	}
+	
+	
+}
